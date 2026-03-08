@@ -26,9 +26,7 @@ export class DocsSourceNpm extends DocsSource {
     tree: NavEntry[];
     fileMap: Map<string, string>;
   }> {
-    const source = this.options.subdir
-      ? `${this.src}/${this.options.subdir}`
-      : this.src;
+    const source = this.options.subdir ? `${this.src}/${this.options.subdir}` : this.src;
 
     const id = source.replace(/[/#:@]/g, "_");
     const dir = join(tmpdir(), "mdzilla", "npm", id);

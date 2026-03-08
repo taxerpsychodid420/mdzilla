@@ -36,8 +36,7 @@ async function main() {
 
   const exportDir = values.export;
   const docsDir = positionals[0];
-  const plain =
-    values.plain || values.headless || docsDir?.startsWith("npm:") || false;
+  const plain = values.plain || values.headless || docsDir?.startsWith("npm:") || false;
   if (values.help || !docsDir) {
     const bin = `${bold(cyan("npx"))} ${bold("mdzilla")}`;
     console.log(
