@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DocsSource } from "./_base.ts";
 import { DocsSourceFS } from "./fs.ts";
+import { parseNpmSpec, fetchNpmInfo } from "./_npm.ts";
 import type { NavEntry } from "../nav.ts";
 
 export interface DocsSourceNpmOptions {
@@ -26,7 +27,9 @@ export class DocsSourceNpm extends DocsSource {
     tree: NavEntry[];
     fileMap: Map<string, string>;
   }> {
-    const source = this.options.subdir ? `${this.src}/${this.options.subdir}` : this.src;
+    // Ensure npm: prefix for giget provider routing
+    const pkg = this.src.startsWith("npm:") ? this.src : `npm:${this.src}`;
+    const source = this.options.subdir ? `${pkg}/${this.options.subdir}` : pkg;
 
     const id = source.replace(/[/#:@]/g, "_");
     const dir = join(tmpdir(), "mdzilla", "npm", id);
@@ -36,6 +39,8 @@ export class DocsSourceNpm extends DocsSource {
       dir,
       force: true,
       install: false,
+      providers: { npm: npmProvider },
+      registry: false,
     });
 
     let docsDir = dir;
@@ -57,4 +62,16 @@ export class DocsSourceNpm extends DocsSource {
     }
     return this._fs.readContent(filePath);
   }
+}
+
+// Custom giget provider that resolves npm packages via the registry
+async function npmProvider(input: string) {
+  const { name, version, subdir } = parseNpmSpec(input);
+  const info = await fetchNpmInfo(name, version);
+  return {
+    name: info.name as string,
+    version: info.version as string,
+    subdir,
+    tar: (info.dist as { tarball: string }).tarball,
+  };
 }

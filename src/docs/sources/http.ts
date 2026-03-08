@@ -1,5 +1,6 @@
 import { parseMeta } from "md4x";
 import { DocsSource } from "./_base.ts";
+import { parseNpmURL, fetchNpmInfo } from "./_npm.ts";
 import type { NavEntry } from "../nav.ts";
 
 export interface DocsSourceHTTPOptions {
@@ -19,7 +20,7 @@ export class DocsSourceHTTP extends DocsSource {
   constructor(url: string, options: DocsSourceHTTPOptions = {}) {
     super();
     this.url = url.replace(/\/+$/, "");
-    this._npmPackage = _parseNpmURL(this.url);
+    this._npmPackage = parseNpmURL(this.url);
     this.options = options;
   }
 
@@ -140,19 +141,12 @@ export class DocsSourceHTTP extends DocsSource {
 
   /** Load an npm package README from the registry */
   private async _loadNpm(pkg: string): Promise<{ tree: NavEntry[]; fileMap: Map<string, string> }> {
-    const registryURL = `https://registry.npmjs.org/${pkg}`;
     let markdown: string;
     try {
-      const res = await fetch(registryURL, {
-        headers: { accept: "application/json" },
-      });
-      if (!res.ok) {
-        markdown = `# ${res.status} ${res.statusText}\n\nFailed to fetch package \`${pkg}\` from npm registry`;
-      } else {
-        const data = (await res.json()) as { readme?: string; name?: string; description?: string };
-        markdown =
-          data.readme || `# ${data.name || pkg}\n\n${data.description || "No README available."}`;
-      }
+      const data = await fetchNpmInfo(pkg);
+      markdown =
+        (data.readme as string) ||
+        `# ${(data.name as string) || pkg}\n\n${(data.description as string) || "No README available."}`;
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       markdown = `# Fetch Error\n\nFailed to fetch package \`${pkg}\`\n\n> ${message}`;
@@ -380,32 +374,6 @@ function _extractLinks(
   }
 
   return { entries, tocPaths };
-}
-
-/**
- * Detect npmjs.com URLs and extract the package name.
- * Supports: npmjs.com/<pkg>, npmjs.com/package/<pkg>, www.npmjs.com/package/<pkg>
- * Also handles scoped packages: npmjs.com/package/@scope/name
- */
-function _parseNpmURL(url: string): string | undefined {
-  let parsed: URL;
-  try {
-    parsed = new URL(url);
-  } catch {
-    return undefined;
-  }
-  if (parsed.hostname !== "www.npmjs.com" && parsed.hostname !== "npmjs.com") {
-    return undefined;
-  }
-  // /package/@scope/name or /package/name
-  const pkgMatch = parsed.pathname.match(/^\/package\/((?:@[^/]+\/)?[^/]+)\/?$/);
-  if (pkgMatch) return pkgMatch[1];
-  // Short form: npmjs.com/<name> (not a known route like /settings, /signup, etc.)
-  const shortMatch = parsed.pathname.match(/^\/((?:@[^/]+\/)?[^/]+)\/?$/);
-  if (shortMatch && !/^(package|settings|signup|login|org|search)$/.test(shortMatch[1]!)) {
-    return shortMatch[1];
-  }
-  return undefined;
 }
 
 /** Resolve an href relative to a base URL, returning null for external links */
