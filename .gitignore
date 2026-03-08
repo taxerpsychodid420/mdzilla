@@ -7,4 +7,3 @@ dist
 tsconfig.tsbuildinfo
 *.log*
 *.env*
-test/docs
