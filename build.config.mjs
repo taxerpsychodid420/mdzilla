@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import { defineBuildConfig } from "obuild/config";
 
 export default defineBuildConfig({
@@ -7,4 +8,9 @@ export default defineBuildConfig({
       input: ["./src/index.ts", "./src/cli/main.ts"],
     },
   ],
+  hooks: {
+    async start() {
+      execSync("pnpm build", { cwd: "web", stdio: "inherit" });
+    },
+  },
 });

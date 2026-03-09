@@ -8,6 +8,7 @@ import { showCursor, leaveAltScreen } from "./_ansi.ts";
 import { printUsage } from "./_usage.ts";
 import { singleFileMode, pageMode, plainMode } from "./render.ts";
 import { interactiveMode } from "./interactive/index.ts";
+import { openInBrowser } from "./_utils.ts";
 
 async function main() {
   // Gracefully handle broken pipes (e.g., `mdzilla ... | head`)
@@ -24,6 +25,7 @@ async function main() {
       page: { type: "string", short: "p" },
       plain: { type: "boolean", default: isAgent || !process.stdout.isTTY },
       headless: { type: "boolean" },
+      tui: { type: "boolean" },
     },
     allowPositionals: true,
   });
@@ -75,7 +77,20 @@ async function main() {
     return plainMode(docs, pagePath);
   }
 
-  return interactiveMode(docs);
+  if (values.tui) {
+    interactiveMode(docs);
+  } else {
+    const { serve } = await import("srvx");
+    const { createDocsServer } =
+      (await import("../../web/.output/server/index.mjs")) as unknown as typeof import("../../web/server/entry.ts");
+    const docsServer = await createDocsServer({
+      source,
+    });
+    const server = serve({ fetch: docsServer.fetch, gracefulShutdown: false });
+    await server.ready();
+    await server.fetch(new Request(new URL("/api/meta", server.url))); // prefetch
+    openInBrowser(server.url!);
+  }
 }
 
 main().catch((err) => {

@@ -1,0 +1,8 @@
+{
+  "extends": "nitro/tsconfig",
+  "compilerOptions": {
+    "paths": {
+      "mdzilla": ["../src/index.ts"]
+    }
+  }
+}

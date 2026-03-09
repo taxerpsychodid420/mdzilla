@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "imports": {
+    "#app/*": "./app/*",
+    "#server/*": "./server/*"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@speed-highlight/core": "^1.2.14",
+    "mdzilla": "workspace:*"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "nitro": "npm:nitro-nightly@latest",
+    "tailwindcss": "^4.2.1",
+    "vite": "8.0.0-beta.18"
+  }
+}
