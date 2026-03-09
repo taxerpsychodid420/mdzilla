@@ -35,7 +35,8 @@ export async function loadPage(el: HTMLElement, path: string) {
     renderContent(el, data.html);
     const hash = location.hash.slice(1);
     if (hash) {
-      const target = document.getElementById(hash) || el.querySelector(`[id="${CSS.escape(hash)}"]`);
+      const target =
+        document.getElementById(hash) || el.querySelector(`[id="${CSS.escape(hash)}"]`);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
