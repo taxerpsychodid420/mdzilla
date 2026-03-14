@@ -32,22 +32,22 @@
   "dependencies": {
     "@speed-highlight/core": "^1.2.14",
     "giget": "^3.1.2",
-    "md4x": ">=0.0.22",
-    "mdream": "^0.16.0",
+    "md4x": "^0.0.25",
+    "mdream": "^0.17.0",
     "srvx": "^0.11.9",
-    "std-env": "4.0.0-rc.1"
+    "std-env": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@typescript/native-preview": "latest",
-    "@vitest/coverage-v8": "latest",
-    "automd": "latest",
-    "changelogen": "latest",
-    "obuild": "latest",
-    "oxfmt": "latest",
-    "oxlint": "latest",
-    "typescript": "latest",
-    "vitest": "latest"
+    "@types/node": "^25.5.0",
+    "@typescript/native-preview": "^7.0.0-dev.20260314.1",
+    "@vitest/coverage-v8": "^4.1.0",
+    "automd": "^0.4.3",
+    "changelogen": "^0.6.2",
+    "obuild": "^0.4.32",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
   },
-  "packageManager": "pnpm@10.29.3"
+  "packageManager": "pnpm@10.32.1"
 }
