@@ -130,10 +130,12 @@ async function _scanNav(
   const entries: NavEntry[] = [];
 
   for (const entry of dirEntries) {
-    // Skip hidden/config files and partials
+    // Skip hidden/config files, partials, and common non-doc dirs
     if (
       entry.startsWith(".") ||
       entry.startsWith("_") ||
+      entry === "node_modules" ||
+      entry === "dist" ||
       entry === "package.json" ||
       entry === "pnpm-lock.yaml" ||
       entry === "pnpm-workspace.yaml"
